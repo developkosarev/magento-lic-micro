@@ -7,8 +7,13 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
-    volumes:
-      - ./images/rabbitmq/conf/rabbitmq.conf:/etc/rabbitmq/conf.d/20-rabbitmq.conf
+    #volumes:
+    #  - ./images/rabbitmq/conf/rabbitmq.conf:/etc/rabbitmq/conf.d/20-rabbitmq.conf
+    environment:
+      - "RABBITMQ_USER=${RABBITMQ_USER}"
+      - "RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}"
+      - "RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}"
+      - "RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}"
 
   mailcatcher:
     container_name: lic_mailcatcher
