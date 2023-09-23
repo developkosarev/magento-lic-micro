@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app-private-fies:
+    container_name: app-private-files
+    build: app-private-files/.
+    volumes:
+      - ./app-private-files:/app:delegated
+    #restart: on-failure
+    env_file: app-private-files/.env
+    environment:
+      APP_NAME: app-private-files
+    tty: true
+    stdin_open: true  
+
+  app-reminder:  
+    container_name: app-reminder
+    build: app-reminder/.
+    volumes:
+      - ./app-reminder:/app:delegated
+    #working_dir: /app
+    #restart: on-failure
+    env_file: app-reminder/.env
+    #user: ${CURRENT_UID}
+    environment:
+      APP_NAME: app-reminder
+    tty: true
+    stdin_open: true

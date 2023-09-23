@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    container_name: lic_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    volumes:
+      - ./images/rabbitmq/conf/rabbitmq.conf:/etc/rabbitmq/conf.d/20-rabbitmq.conf
+
+  mailcatcher:
+    container_name: lic_mailcatcher
+    image: tophfr/mailcatcher:0.7.1    
+    ports:
+      - "${MAILCATCHER_LOCAL_PORT}:80"
+
+  db:
+    container_name: lic_db
+    image: mariadb:10.4
+    command:
+      --max_allowed_packet=64M
+      --optimizer_use_condition_selectivity=1
+      --optimizer_switch="rowid_filter=off"
+    ports:
+      - "3306:3306"
+    env_file: images/env/db.env
