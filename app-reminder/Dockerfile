@@ -4,7 +4,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 #COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 #COPY . /app/
-#WORKDIR /app/
+WORKDIR /app/
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
