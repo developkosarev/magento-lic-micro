@@ -13,6 +13,18 @@ services:
   #  tty: true
   #  stdin_open: true
 
+  app-cron:
+    container_name: app-cron
+    build: app-cron/.
+    volumes:
+      - ./app-cron:/app:delegated
+    #restart: on-failure
+    env_file: app-cron/.env
+    environment:
+      APP_NAME: app-cron
+    tty: true
+    stdin_open: true
+
   app-reminder:  
     container_name: app-reminder
     build: app-reminder/.

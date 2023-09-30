@@ -1,0 +1,10 @@
+* * * * * echo "$(date)" >> /app/var/log/cron.log 2>&1
+* * * * * /app/bin/console app:cron --env=dev --no-debug >> /app/var/log/cron.log 2>&1
+* * * * * root echo "$(date)" > /dev/stdout 2>&1
+* * * * * root /usr/local/bin/php /app/bin/console app:cron --env=dev --no-debug >> /app/var/log/cron.log 2>&1
+* * * * * echo "$(date)" >> /app/var/log/cron1.log 2>&1
+* * * * * /usr/local/bin/php /app/bin/console app:cron --env=dev --no-debug >> /app/var/log/cron2.log 2>&1
+* * * * * /usr/local/bin/php -v >> /app/var/log/cron3.log 2>&1
+* * * * * env >> /app/var/log/cron4.log 2>&1
+* * * * * printenv >> /app/var/log/cron5.log 2>&1
+# This line must be always present
