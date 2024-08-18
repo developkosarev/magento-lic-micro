@@ -28,6 +28,8 @@ bin/console messenger:consume --env=prod --limit=1 --failure-limit=2 --no-debug
 docker exec -it app-cron bash
 ```
 
+## Messenger via composer 
+https://thomas-baier.medium.com/php-workers-in-docker-environments-the-right-way-27e822546014
 
 https://github.com/thebiggive/mailer
 https://thecodest.co/blog/microservices-communication-in-symfony-part-i-1/
